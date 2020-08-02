@@ -1,0 +1,15 @@
+apply plugin: 'com.novoda.bintray-release'
+
+final config = rootProject.ext
+
+publish {
+    userOrg = 'liuyuchuan'
+    groupId = 'me.lyc'
+    artifactId = 'fastcommon'
+    publishVersion = config.versionName
+    desc = 'Common libraries and utils for android develop.'
+    website = 'https://github.com/SirLYC/FastCommon'
+    bintrayUser=config.bintrayUser
+    bintrayKey=config.bintrayKey
+    dryRun=false
+}

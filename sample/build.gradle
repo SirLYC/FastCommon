@@ -27,8 +27,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    if (config.sampleUseRemoteLib) {
+        implementation "me.lyc:fastcommon:${config.versionName}"
+    } else {
+        implementation project(":fastcommon")
+    }
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.1.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation project(":fastcommon")
 }

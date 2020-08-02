@@ -10,6 +10,31 @@
 
 ### 导入
 
+根目录`build.gradle`
+
+``` gradle
+buildscript {
+
+    // ...
+
+    repositories {
+        google()
+        jcenter()
+    }
+
+    // ...
+}
+```
+
+引入
+
+``` gradle
+dependencies {
+    // ...
+    implementation 'me.lyc:fastcommon:1.0'
+}
+```
+
 ### 初始化
 
 在使用任何API前，务必先初始化：

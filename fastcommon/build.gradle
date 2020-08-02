@@ -26,6 +26,10 @@ android {
     }
 }
 
+if (config.publishFastCommon) {
+    apply from: 'publish.gradle'
+}
+
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
