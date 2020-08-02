@@ -1,0 +1,3 @@
+include ':fastcommon'
+include ':sample'
+rootProject.name = "FastCommon"
