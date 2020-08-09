@@ -14,7 +14,13 @@ fun waitFinishOnMain(runnable: Runnable) {
         runnable.run()
     } else {
         val latch = CountDownLatch(1)
-        ExecutorFactory.MAIN_EXECUTOR.execute(runnable)
+        ExecutorFactory.MAIN_EXECUTOR.execute {
+            try {
+                runnable.run()
+            } finally {
+                latch.countDown()
+            }
+        }
         try {
             latch.await()
         } catch (e: Exception) {
