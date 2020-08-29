@@ -5,9 +5,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import me.lyc.fastcommon.FastCommonLib
+import me.lyc.fastcommon.imagepick.pickImage
 import me.lyc.fastcommon.log.LogUtils
 import me.lyc.fastcommon.permission.checkAndRequestPermissions
 import me.lyc.fastcommon.toast.showLongToast
+import me.lyc.fastcommon.toast.showToast
 
 /**
  * Created by Liu Yuchuan on 2020/8/2.
@@ -39,6 +41,16 @@ class MainActivity : AppCompatActivity() {
                     LogUtils.d(TAG, "Rejected: ${rejected.contentToString()}")
                 }
             )
+        }
+
+        bt_pick_image.setOnClickListener {
+            pickImage({
+                showToast("Image pick result=${it}")
+            }, {
+                showToast("Image pick cancelled!")
+            }, { code, err ->
+                showToast("Image pick error! Code=${code}, reason=${err}")
+            })
         }
     }
 }

@@ -30,9 +30,9 @@ internal object PermissionController {
             grantResults[index] != PackageManager.PERMISSION_GRANTED
         }.toTypedArray()
         if (rejectedPermissions.isNotEmpty()) {
-            request.callback.onPermissionRejected(permissions, rejectedPermissions)
+            request.callback?.onPermissionRejected(permissions, rejectedPermissions)
         } else {
-            request.callback.onPermissionsGranted(permissions)
+            request.callback?.onPermissionsGranted(permissions)
         }
     }
 }

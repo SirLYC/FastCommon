@@ -1,6 +1,6 @@
 # FastCommon
 
-[![Download](https://api.bintray.com/packages/liuyuchuan/maven/fastcommon/images/download.svg?version=1.1)](https://bintray.com/liuyuchuan/maven/fastcommon/1.1/link)
+[ ![Download](https://api.bintray.com/packages/liuyuchuan/maven/fastcommon/images/download.svg?version=1.2.0) ](https://bintray.com/liuyuchuan/maven/fastcommon/1.2.0/link)
 
 日常个人开发/验证测试快速搭建App的常用基础库。
 
@@ -74,6 +74,10 @@ FastCommonLib.init(context)
 ### Toast
 
 **位于toast包下**：toast简单封装。
+
+### 图片选择
+
+**位于imagepick包下**：封装了调用系统选择器选择图片的友好API
 
 ### 其他工具
 

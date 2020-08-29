@@ -1,3 +1,3 @@
-//include ':fastcommon'
+include ':fastcommon'
 include ':sample'
 rootProject.name = "FastCommon"
