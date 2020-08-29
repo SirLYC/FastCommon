@@ -22,6 +22,7 @@ internal object PermissionController {
         grantResults: IntArray
     ) {
         val request = requestMap[requestCode]
+        requestMap.remove(requestCode)
         if (request == null) {
             LogUtils.w(TAG, "Cannot find a request for requestCode=$requestCode")
             return
@@ -30,9 +31,13 @@ internal object PermissionController {
             grantResults[index] != PackageManager.PERMISSION_GRANTED
         }.toTypedArray()
         if (rejectedPermissions.isNotEmpty()) {
-            request.callback?.onPermissionRejected(permissions, rejectedPermissions)
+            request.callback.onPermissionRejected(permissions, rejectedPermissions)
         } else {
-            request.callback?.onPermissionsGranted(permissions)
+            request.callback.onPermissionsGranted(permissions)
         }
+    }
+
+    fun cancelRequest(code: Int) {
+        requestMap.remove(code)
     }
 }

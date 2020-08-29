@@ -25,6 +25,7 @@ internal object ImagePickController {
 
     fun handleResult(requestCode: Int, resultCode: Int, data: Intent?) {
         val request = requestMap[requestCode]
+        requestMap.remove(requestCode)
         if (request == null) {
             LogUtils.w(TAG, "No request found for code=$requestCode")
             return
@@ -32,12 +33,12 @@ internal object ImagePickController {
         if (resultCode == Activity.RESULT_OK) {
             val uri = data?.data
             if (uri != null) {
-                request.callback?.onImagePicked(uri)
+                request.callback.onImagePicked(uri)
             } else {
-                request.callback?.onImagePickError(ERROR_CODE_INTERNAL, "Receive null uri!")
+                request.callback.onImagePickError(ERROR_CODE_INTERNAL, "Receive null uri!")
             }
         } else {
-            request.callback?.onImagePickCancel()
+            request.callback.onImagePickCancel()
         }
     }
 

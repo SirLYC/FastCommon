@@ -1,6 +1,6 @@
 # FastCommon
 
-[ ![Download](https://api.bintray.com/packages/liuyuchuan/maven/fastcommon/images/download.svg?version=1.2.2) ](https://bintray.com/liuyuchuan/maven/fastcommon/1.2.2/link)
+[ ![Download](https://api.bintray.com/packages/liuyuchuan/maven/fastcommon/images/download.svg?version=1.2.3) ](https://bintray.com/liuyuchuan/maven/fastcommon/1.2.3/link)
 
 日常个人开发/验证测试快速搭建App的常用基础库。
 
@@ -33,7 +33,7 @@ buildscript {
 ``` gradle
 dependencies {
     // ...
-    implementation 'me.lyc:fastcommon:1.2.2'
+    implementation 'me.lyc:fastcommon:1.2.3'
 }
 ```
 

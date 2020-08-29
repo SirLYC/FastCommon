@@ -12,7 +12,7 @@ const val ERROR_CODE_NO_PICKER = -3
 
 fun FragmentActivity.pickImage(
     callback: IImagePickCallback
-) {
+): Int {
     val fm = supportFragmentManager
     val fragment = fm.findFragmentByTag(ImagePickFragment.TAG) as? ImagePickFragment
         ?: ImagePickFragment().apply {
@@ -20,22 +20,17 @@ fun FragmentActivity.pickImage(
                 .add(this, ImagePickFragment.TAG)
                 .commitNow()
         }
-    fragment.requestPick(nextActivityRequestCode(), callback)
+    val code = nextActivityRequestCode()
+    fragment.requestPick(code, callback)
+    return code
 }
 
 fun FragmentActivity.pickImage(
     onImagePicked: (uri: Uri) -> Unit,
     onImagePickCancel: () -> Unit = {},
     onImagePickError: (code: Int, reason: String) -> Unit = { _, _ -> }
-) {
-    val fm = supportFragmentManager
-    val fragment = fm.findFragmentByTag(ImagePickFragment.TAG) as? ImagePickFragment
-        ?: ImagePickFragment().apply {
-            fm.beginTransaction()
-                .add(this, ImagePickFragment.TAG)
-                .commitNow()
-        }
-    fragment.requestPick(nextActivityRequestCode(), object : IImagePickCallback {
+): Int {
+    val callback = object : IImagePickCallback {
         override fun onImagePicked(uri: Uri) {
             onImagePicked(uri)
         }
@@ -47,5 +42,14 @@ fun FragmentActivity.pickImage(
         override fun onImagePickError(code: Int, reason: String) {
             onImagePickError(code, reason)
         }
-    })
+    }
+    return pickImage(callback)
+}
+
+/**
+ * This method can avoid memory leak
+ * @param code  returned by [pickImage]
+ */
+fun cancelPickImage(code: Int) {
+    ImagePickController.cancelRequest(code)
 }

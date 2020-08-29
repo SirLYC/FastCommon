@@ -20,10 +20,10 @@ fun Context.isPermissionsGranted(permissions: Array<String>): Boolean {
 fun FragmentActivity.checkAndRequestPermissions(
     permissions: Array<String>,
     callback: IPermissionCallback
-) {
+): Int {
     if (isPermissionsGranted(permissions)) {
         callback.onPermissionsGranted(permissions)
-        return
+        return -1
     }
 
     val fm = supportFragmentManager
@@ -33,15 +33,17 @@ fun FragmentActivity.checkAndRequestPermissions(
                 .add(this, PermissionFragment.TAG)
                 .commitNow()
         }
-    fragment.requestPermissions(PermissionRequest(permissions, callback))
+    val request = PermissionRequest(permissions, callback)
+    fragment.requestPermissions(request)
+    return request.requestCode
 }
 
 fun FragmentActivity.checkAndRequestPermissions(
     permissions: Array<String>,
     onGranted: (permissions: Array<out String>) -> Unit,
     onRejected: (permissions: Array<out String>, rejectedPermissions: Array<out String>) -> Unit
-) {
-    checkAndRequestPermissions(permissions, object : IPermissionCallback {
+): Int {
+    return checkAndRequestPermissions(permissions, object : IPermissionCallback {
         override fun onPermissionsGranted(permissions: Array<out String>) {
             onGranted(permissions)
         }
@@ -53,6 +55,10 @@ fun FragmentActivity.checkAndRequestPermissions(
             onRejected(permissions, rejectedPermissions)
         }
     })
+}
+
+fun cancelPermissionRequest(code: Int) {
+    PermissionController.cancelRequest(code)
 }
 
 private var currentRequestCode = 0
