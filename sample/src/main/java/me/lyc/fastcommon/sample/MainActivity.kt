@@ -1,6 +1,7 @@
 package me.lyc.fastcommon.sample
 
 import android.Manifest
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -8,6 +9,7 @@ import me.lyc.fastcommon.FastCommonLib
 import me.lyc.fastcommon.imagepick.pickImage
 import me.lyc.fastcommon.log.LogUtils
 import me.lyc.fastcommon.permission.checkAndRequestPermissions
+import me.lyc.fastcommon.sample.bitmap.BitmapActivity
 import me.lyc.fastcommon.toast.showLongToast
 import me.lyc.fastcommon.toast.showToast
 
@@ -46,6 +48,9 @@ class MainActivity : AppCompatActivity() {
         bt_pick_image.setOnClickListener {
             pickImage({
                 showToast("Image pick result=${it}")
+                startActivity(Intent(this, BitmapActivity::class.java).apply {
+                    data = it
+                })
             }, {
                 showToast("Image pick cancelled!")
             }, { code, err ->

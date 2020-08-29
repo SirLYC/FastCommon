@@ -1,6 +1,6 @@
 # FastCommon
 
-[ ![Download](https://api.bintray.com/packages/liuyuchuan/maven/fastcommon/images/download.svg?version=1.2.0) ](https://bintray.com/liuyuchuan/maven/fastcommon/1.2.0/link)
+[ ![Download](https://api.bintray.com/packages/liuyuchuan/maven/fastcommon/images/download.svg?version=1.2.2) ](https://bintray.com/liuyuchuan/maven/fastcommon/1.2.2/link)
 
 日常个人开发/验证测试快速搭建App的常用基础库。
 
@@ -33,7 +33,7 @@ buildscript {
 ``` gradle
 dependencies {
     // ...
-    implementation 'me.lyc:fastcommon:1.1'
+    implementation 'me.lyc:fastcommon:1.2.2'
 }
 ```
 
@@ -78,6 +78,10 @@ FastCommonLib.init(context)
 ### 图片选择
 
 **位于imagepick包下**：封装了调用系统选择器选择图片的友好API
+
+### 图片解码
+
+*位于bitmap包下**：解码Bitmap，可指定最大宽高
 
 ### 其他工具
 
