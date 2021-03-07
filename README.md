@@ -1,10 +1,12 @@
 # FastCommon
 
-[ ![Download](https://api.bintray.com/packages/liuyuchuan/maven/fastcommon/images/download.svg?version=1.2.3) ](https://bintray.com/liuyuchuan/maven/fastcommon/1.2.3/link)
+[ ![Download](https://api.bintray.com/packages/liuyuchuan/maven/fastcommon/images/download.svg?version=1.3.1) ](https://bintray.com/liuyuchuan/maven/fastcommon/1.3.1/link)
 
 日常个人开发/验证测试快速搭建App的常用基础库。
 
-**MinSDK**：16
+**MinSDK**：21
+
+> 1.x 支持到了16，后续只会针对21及以上更新了
 
 > 注：纯Kotlin开发，Java可以用，但没有专门针对Java优化API形式，使用Java体验可能不会太好。
 
@@ -33,7 +35,7 @@ buildscript {
 ``` gradle
 dependencies {
     // ...
-    implementation 'me.lyc:fastcommon:1.2.3'
+    implementation 'me.lyc:fastcommon:1.3.1'
 }
 ```
 
@@ -81,7 +83,7 @@ FastCommonLib.init(context)
 
 ### 图片解码
 
-*位于bitmap包下**：解码Bitmap，可指定最大宽高
+**位于bitmap包下**：解码Bitmap，可指定最大宽高
 
 ### 其他工具
 

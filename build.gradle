@@ -15,7 +15,7 @@ buildscript {
         projectProp.load(new FileInputStream(projectPropFile))
         println("project.properties:\n$projectProp ")
         if (projectProp.containsKey('publishFastCommon')) {
-            publishFastCommon = projectProp['publishFastCommon'] == "true"
+             publishFastCommon = projectProp['publishFastCommon'] == "true"
             if (publishFastCommon) {
                 ext.bintrayUser = localProp['bintrayUser']
                 ext.bintrayKey = localProp['bintrayKey']
